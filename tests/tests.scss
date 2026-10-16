@@ -1,0 +1,137 @@
+.tests { // This line should give error about invalid class
+  color: red; // This line should give error about named color
+}
+
+.c-component--h1 { // This line should give error about invalid class
+  color: #ffffff;
+}
+
+.c-component1 { // This line should give error about invalid class
+  color: #ffffff;
+}
+
+.foo-baa {
+
+}
+
+.c-block__element__element { // This line should give error about invalid class
+  color: #000; // This line should give error about short color definitions
+}
+
+.c-block__element--modifier--modifier { // This line should give error about invalid class
+  @extend %foo; // Valid extend position
+
+  @include my_mixin(); // Valid include position
+
+  @media { // This line should give an error because of misplaced @media
+    color: #000000;
+  }
+
+  color: #000000;
+
+  @extend %foo; // This line should give an error because of misplaced @extend
+
+  @include my_mixin(); // This line should give an error because of misplaced @include
+
+  @media { // Valid media position
+    color: #000000;
+  }
+}
+
+//This line should give error about missing whitespace at start of comment
+.c-blockElement { // This line should give error about invalid class
+  color: #000000;
+}
+
+.c-block {
+  &__element {
+    &--modifier {
+     .another-class {
+        &:hover {
+          &::before { // This line should give error about nesting depth
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+}
+
+#c-block { // This line should give error about id selector
+  color: #000000;
+}
+
+.c-block--variant-2 {
+  color: #000000 !important; // This line should give error about important
+}
+
+.c-block--variant-8 {
+  &:before { // This line should give error about invalid pseudo selector (::)
+    color: #000000;
+  }
+}
+
+// Valid BEM classes
+.c-block {
+  &:hover {
+    color: #000000;
+  }
+
+  &__element {
+    color: #000000;
+
+    &:hover {
+      color: #000000;
+    }
+
+    &--modifier {
+      color: #000000;
+
+      &:hover {
+        color: #000000;
+      }
+    }
+  }
+
+  &__element--modifier {
+    color: #000000;
+
+    &:hover {
+      color: #000000;
+    }
+  }
+}
+
+#container a { top: 10px; } // no-descending-specificity
+a { top: 0; }
+
+@property --e-progress-ring__progress { // Should not throw an error for scss/at-rule-no-unknown
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+.c-grid-areas--splitted-columns {
+  grid-template-areas:
+    "a a a"
+    "b b a";
+}
+
+.c-grid-areas--unequal-columns {
+  grid-template-areas:
+    "a a a"
+    "b b b b";
+}
+
+.c-grid-areas--empty {
+  grid-template-areas: "";
+}
+
+.c-duplicated-custom-properties {
+  --custom-property: #ffffff;
+  --custom-property: #cccccc;
+}
+
+.c-attribute-selector-with-missing-quotes[target=_blank] {
+  color: #000000;
+}

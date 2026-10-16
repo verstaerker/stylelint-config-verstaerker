@@ -1,0 +1,42 @@
+{
+  "name": "stylelint-config-verstaerker",
+  "version": "1.0.0",
+  "description": "Default Verstärker configuration for stylelint.",
+  "main": "index.js",
+  "type": "module",
+  "author": "Verstärker",
+  "license": "ISC",
+  "keywords": [
+    "stylelint",
+    "Verstärker",
+    "stylelint-config"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/verstaerker/stylelint-config-verstaerker"
+  },
+  "scripts": {
+    "test": "stylelint 'tests/*.{css,scss}' --custom-syntax postcss-scss --config index.js",
+    "stylelint": "stylelint -v"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "CHANGES.md",
+    "index.js",
+    "fix.js",
+    "property-groups/",
+    "rules/"
+  ],
+  "dependencies": {
+    "@stylistic/stylelint-plugin": "^5.3.1",
+    "postcss-scss": "^4.0.9",
+    "stylelint-config-html": "^2.0.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.2",
+    "stylelint-scss": "^7.3.0"
+  },
+  "peerDependencies": {
+    "stylelint": "^17.16.0"
+  }
+}
